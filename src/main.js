@@ -127,7 +127,7 @@ function renderDocsView() {
   const endpointGrid = (() => {
     const cells = []
     for (let b = 2; b <= 1023; b++) {
-      cells.push(`<a href="./base/${b}/" class="ep-cell" title="base ${b}">${b}</a>`)
+      cells.push(`<a href="./base/${b}.json" class="ep-cell" title="GET /base/${b}.json" target="_blank">${b}</a>`)
     }
     return cells.join('')
   })()
@@ -157,9 +157,10 @@ function renderDocsView() {
           <h2>エンドポイント</h2>
           <div class="endpoint-card">
             <span class="pill method">GET</span>
-            <code>https://&lt;username&gt;.github.io/web-api-js/base/<em>{base}</em>/</code>
+            <code>https://&lt;username&gt;.github.io/web-api-js/base/<em>{base}</em>.json</code>
           </div>
-          <p class="note-inline">base は <strong>2〜1023</strong> の整数。エンドポイント数: <strong>1,022</strong></p>
+          <p class="note-inline">base は <strong>2〜1023</strong> の整数。エンドポイント数: <strong>1,022</strong><br>
+            <code>Content-Type: application/json</code> で返ります。乱数はデプロイ時に確定します。</p>
         </section>
 
         <section class="doc-section">
@@ -226,8 +227,8 @@ function renderDocsView() {
             </div>
             <div class="url-row">
               <span class="pill method sm">GET</span>
-              <code id="url-display">/base/16/</code>
-              <a id="open-link" class="btn-link sm" href="./base/16/" target="_blank">新しいタブで開く ↗</a>
+              <code id="url-display">/base/16.json</code>
+              <a id="open-link" class="btn-link sm" href="./base/16.json" target="_blank">JSON を開く ↗</a>
             </div>
             <button class="btn primary" onclick="runDemo()">変換する (インライン)</button>
             <div id="demo-out" class="demo-out"></div>
@@ -239,7 +240,7 @@ function renderDocsView() {
       <footer class="site-footer">
         <p>Powered by <a href="https://vitejs.dev/" target="_blank" rel="noreferrer">Vite</a>
           · Deployed on <a href="https://pages.github.com/" target="_blank" rel="noreferrer">GitHub Pages</a>
-          · 1,022 static endpoints</p>
+          · 1,022 JSON endpoints (<code>application/json</code>)</p>
       </footer>
     </div>
   `
@@ -249,8 +250,8 @@ function renderDocsView() {
     document.getElementById('base-slider').value = n
     document.getElementById('base-num').value = n
     document.getElementById('base-label').textContent = n
-    document.getElementById('url-display').textContent = `/base/${n}/`
-    document.getElementById('open-link').href = `./base/${n}/`
+    document.getElementById('url-display').textContent = `/base/${n}.json`
+    document.getElementById('open-link').href = `./base/${n}.json`
   }
 
   window.runDemo = () => {

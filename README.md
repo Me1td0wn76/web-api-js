@@ -46,3 +46,4 @@ GET https://me1td0wn76.github.io/web-api-js/base/{base}/
 |digits|number[]|各桁の数値配列 (最上位桁から)|
 |digitCount|number|桁数|
 |generatedAt|string|生成日時 (ISO 8601)|
+
